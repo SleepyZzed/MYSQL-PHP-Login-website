@@ -161,13 +161,7 @@ h1 {
   float: left;
   font-family: arial;
 }
-.form i{
-	position: absolute;
-	font-size: 15px;
-  color: grey;
-  float: right;
-	margin: 15px 0 0 -45px;
-}
+
 
 .form-signup button {
   display: block;

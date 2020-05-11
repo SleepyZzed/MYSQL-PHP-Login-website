@@ -17,7 +17,7 @@
               echo '<p class="signuperror">Invalid username and e-mail!</p>';
             }
             else if ($_GET["error"] == "invaliduid") {
-              echo '<p class="signuperror">Invalid username!</p>';
+              echo '<p class="signuperror">Invalid username: Cannot contain spaces or special characters!</p>';
             }
             else if ($_GET["error"] == "invalidmail") {
               echo '<p class="signuperror">Invalid e-mail!</p>';
@@ -72,7 +72,7 @@
            
 
             <input type="password" name="pwd" id="pwd" placeholder="Password">
-            <i class="far fa-envelope"></i>
+          
             <input type="password" name="pwd-repeat" placeholder="Repeat password">
             <button type="submit" name="signup-submit">Signup</button>
           </form>
