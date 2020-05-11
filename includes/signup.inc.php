@@ -1,10 +1,15 @@
 <?php
 // Here we check whether the user got to this page by clicking the proper signup button.
+#defines name space
+require 'phpmailer/PHPMailerAutoload.php';
+$mail = new PHPMailer;
 if (isset($_POST['signup-submit'])) {
 
   // We include the connection script so we can use it later.
   // We don't have to close the MySQLi connection since it is done automatically, but it is a good habit to do so anyways since this will immediately return resources to PHP and MySQL, which can improve performance.
   require 'dbh.inc.php';
+  //include required php files
+
 
   // We grab all the data which we passed from the signup form so we can use it later.
   $username = $_POST['uid'];
@@ -17,7 +22,8 @@ if (isset($_POST['signup-submit'])) {
   $email = $conn -> real_escape_string($email);
   $password = $conn -> real_escape_string($password);
   $passwordRepeat = $conn -> real_escape_string($passwordRepeat);
-  $vkey = md5(time().$username);
+  $vkey = password_hash(time().$username, PASSWORD_DEFAULT);
+  
   // Then we perform a bit of error handling to make sure we catch any errors made by the user. Here you can add ANY error checks you might think of! I'm just checking for a few common errors in this tutorial so feel free to add more. If we do run into an error we need to stop the rest of the script from running, and take the user back to the signup page with an error message. As an additional feature we will also send all the data back to the signup page, to make sure all the fields aren't empty and the user won't need to type it all in again.
 
   // We check for any empty inputs. (PS: This is where most people get errors because of typos! Check that your code is identical to mine. Including missing parenthesis!)
@@ -128,13 +134,36 @@ if (isset($_POST['signup-submit'])) {
           //send email to user when registered
           $to = $email;
           $subject = "Email verification";
-          $message = "<a href= 'http://localhost/cybersecurity/verify.php?vkey=$vkey'>Register Accounnt</a>";
-          $headers = "From: zedamaar@gmail.com \r \n";
-          $headers = "MIME-Version: 1.0" . "\r\n";
-          $headers .= "Content-type:text/html;charset=UTF8" . "\r\n";
-          mail($to, $subject, $message, $headers);
-          header("Location: ../signup.php?signup=success");
-          exit();
+          $message = "<p>Hi! $username, You have signed up for Cyber security Click the link to verify your account</p><a href= 'http://localhost/cybersecurity/verify.php?vkey=$vkey'>Register Accounnt</a>";
+          
+          
+          $mail->isSMTP();
+          $mail->Host='smtp.gmail.com';
+          $mail->Port=587;
+          $mail->SMTPAuth=true;
+          $mail->SMTPSecure='tls';
+          $mail->Username='ihatehanzomains@gmail.com';
+          $mail->Password='crusher4';
+          $mail->setFrom('ihatehanzomains@gmail.com', 'Cyber Security');
+          $mail->addAddress($to);
+          $mail->addReplyto('ihatehanzomains@gmail.com');
+          $mail->isHTML(true);
+          $mail->Subject=$subject;
+          $mail->Body=$message;
+          if(!$mail->send())
+          {
+            header("Location: ../signup.php?signup=success");
+          
+          
+            exit();
+          }
+          else{header("Location: ../signup.php?index=verificationsent");
+          
+          
+            exit();
+           
+          }
+
 
         }
       }
