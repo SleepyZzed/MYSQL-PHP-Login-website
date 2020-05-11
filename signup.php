@@ -45,7 +45,12 @@
           // Here we create a success message if the new user was created.
           else if (isset($_GET["signup"])) {
             if ($_GET["signup"] == "success") {
-              echo '<p class="signupsuccess">Signup successful!</p>';
+              echo '<p class="signupsuccess">Signup successful but you provided an invalid email, some funcaitonality will not be available</p>';
+            }
+          }
+          else if (isset($_GET["verification"])) {
+            if ($_GET["verification"] == "success") {
+              echo '<p class="signupsuccess">Verification email sent please check your inbox</p>';
             }
           }
           ?>

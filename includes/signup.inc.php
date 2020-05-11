@@ -134,7 +134,7 @@ if (isset($_POST['signup-submit'])) {
           //send email to user when registered
           $to = $email;
           $subject = "Email verification";
-          $message = "<p>Hi! $username, You have signed up for Cyber security Click the link to verify your account</p><a href= 'http://localhost/cybersecurity/verify.php?vkey=$vkey'>Register Accounnt</a>";
+          $message = "<p>Hi! $username, You have signed up for Cyber security Click the link to verify your account</p><a href= 'http://localhost/cybersecurity/includes/verify.php?vkey=$vkey'>Register Accounnt</a>";
           
           
           $mail->isSMTP();
@@ -157,7 +157,7 @@ if (isset($_POST['signup-submit'])) {
           
             exit();
           }
-          else{header("Location: ../signup.php?index=verificationsent");
+          else{header("Location: ../signup.php?verification=success");
           
           
             exit();

@@ -7,6 +7,16 @@
     <div class="wrapper-main">
       <section class="section-default">
       <?php
+       if (isset($_GET["error"])) {
+        if ($_GET["error"] == "alreadyverified") {
+          echo '<p class="signuperror">This email address is already verified</p>';
+        }
+      }
+      if (isset($_GET["success"])) {
+        if ($_GET["success"] == "verifycomplete") {
+          echo '<p class="signupsuccess">Your email address has been verified!</p>';
+        }
+      }
       if(isset($_SESSION['id'])){
         echo '<p class="login-status">You are logged in as:', $_SESSION['uid'], '<br>email address: ', $_SESSION['email'], '</p>';
         

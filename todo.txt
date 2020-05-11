@@ -1,0 +1,4 @@
+make it so emails must be unique
+complete registration with email verification
+add success and error messages to login and signup
+add password security meter
