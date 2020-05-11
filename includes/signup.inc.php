@@ -17,6 +17,7 @@ if (isset($_POST['signup-submit'])) {
   $email = $conn -> real_escape_string($email);
   $password = $conn -> real_escape_string($password);
   $passwordRepeat = $conn -> real_escape_string($passwordRepeat);
+  $vkey = md5(time().$username);
   // Then we perform a bit of error handling to make sure we catch any errors made by the user. Here you can add ANY error checks you might think of! I'm just checking for a few common errors in this tutorial so feel free to add more. If we do run into an error we need to stop the rest of the script from running, and take the user back to the signup page with an error message. As an additional feature we will also send all the data back to the signup page, to make sure all the fields aren't empty and the user won't need to type it all in again.
 
   // We check for any empty inputs. (PS: This is where most people get errors because of typos! Check that your code is identical to mine. Including missing parenthesis!)
@@ -100,7 +101,7 @@ if (isset($_POST['signup-submit'])) {
         // Next thing we do is to prepare the SQL statement that will insert the users info into the database. We HAVE to do this using prepared statements to make this process more secure. DON'T JUST SEND THE RAW DATA FROM THE USER DIRECTLY INTO THE DATABASE!
 
         // Prepared statements works by us sending SQL to the database first, and then later we fill in the placeholders (this is a placeholder -> ?) by sending the users data.
-        $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?, ?, ?);";
+        $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers, vkey) VALUES (?, ?, ?, ?);";
         // Here we initialize a new statement using the connection from the dbh.inc.php file.
         $stmt = mysqli_stmt_init($conn);
         // Then we prepare our SQL statement AND check if there are any errors with it.
@@ -118,7 +119,7 @@ if (isset($_POST['signup-submit'])) {
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
           // Next we need to bind the type of parameters we expect to pass into the statement, and bind the data from the user.
-          mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
+          mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $hashedPwd, $vkey);
           // Then we execute the prepared statement and send it to the database!
           // This means the user is now registered! :)
           mysqli_stmt_execute($stmt);
