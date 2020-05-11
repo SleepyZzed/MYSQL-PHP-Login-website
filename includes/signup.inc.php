@@ -124,6 +124,15 @@ if (isset($_POST['signup-submit'])) {
           // This means the user is now registered! :)
           mysqli_stmt_execute($stmt);
           // Lastly we send the user back to the signup page with a success message!
+          
+          //send email to user when registered
+          $to = $email;
+          $subject = "Email verification";
+          $message = "<a href= 'http://localhost/cybersecurity/verify.php?vkey=$vkey'>Register Accounnt</a>";
+          $headers = "From: zedamaar@gmail.com \r \n";
+          $headers = "MIME-Version: 1.0" . "\r\n";
+          $headers .= "Content-type:text/html;charset=UTF8" . "\r\n";
+          mail($to, $subject, $message, $headers);
           header("Location: ../signup.php?signup=success");
           exit();
 
