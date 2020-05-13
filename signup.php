@@ -28,6 +28,9 @@
             else if ($_GET["error"] == "usertaken") {
               echo '<p class="signuperror">Username is already taken!</p>';
             }
+            else if ($_GET["error"] == "emailtaken") {
+              echo '<p class="signuperror">email is already taken!</p>';
+            }
             else if ($_GET["error"] == "tooshort") {
               echo '<p class="signuperror">Password must be at least 8 characters</p>';
             }
