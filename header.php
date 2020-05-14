@@ -40,8 +40,8 @@ session_start();
     }
     else{
       echo '<form action="includes/login.inc.php" method="post">
-      <input type="text" name="mailuid" placeholder="Username..">
-      <input type="password" name="pwd" placeholder="Password..">
+      <input type="text" name="mailuid" autocomplete="off" placeholder="Username..">
+      <input type="password" name="pwd" autocomplete="off" placeholder="Password..">
       <button type="submit" name="login-submit">Login</button>
     </form>
     <div class="header-signup">

@@ -70,26 +70,26 @@
 
             // We check username.
             if (!empty($_GET["uid"])) {
-              echo '<input type="text" name="uid" placeholder="Username" value="'.$_GET["uid"].'">';
+              echo '<input type="text" name="uid" placeholder="Username" autocomplete="off" value="'.$_GET["uid"].'">';
             }
             else {
-              echo '<input type="text" name="uid" placeholder="Username">';
+              echo '<input type="text" name="uid" autocomplete="off" placeholder="Username">';
             }
 
             // We check e-mail.
             if (!empty($_GET["mail"])) {
-              echo '<input type="text" name="mail" placeholder="E-mail" value="'.$_GET["mail"].'">';
+              echo '<input type="text" name="mail" placeholder="E-mail" autocomplete="off" value="'.$_GET["mail"].'">';
             }
             else {
-              echo '<input type="text" name="mail" placeholder="E-mail">';
+              echo '<input type="text" name="mail" autocomplete="off" placeholder="E-mail">';
             }
             ?>
            
                   
             
-            <input type="password" name="pwd" id="password" placeholder="Password">
+            <input type="password" name="pwd" id="password" placeholder="Password" autocomplete="off">
             
-            <input type="password" name="pwd-repeat" placeholder="Repeat password">
+            <input type="password" name="pwd-repeat" placeholder="Repeat password" autocomplete="off">
             <button type="submit" name="signup-submit">Signup</button>
             <script type="text/javascript">
     $(function() {
