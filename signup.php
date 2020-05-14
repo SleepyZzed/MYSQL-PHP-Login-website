@@ -1,3 +1,10 @@
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="jquery.passwordstrength.js"></script>
+
+
 <?php
   // To make sure we don't need to create the header section of the website on multiple pages, we instead create the header HTML markup in a separate file which we then attach to the top of every HTML page on our website. In this way if we need to make a small change to our header we just need to do it in one place. This is a VERY cool feature in PHP!
   require "header.php";
@@ -78,11 +85,17 @@
             }
             ?>
            
-
-            <input type="password" name="pwd" id="pwd" placeholder="Password">
-          
+                  
+            
+            <input type="password" name="pwd" id="password" placeholder="Password">
+            
             <input type="password" name="pwd-repeat" placeholder="Repeat password">
             <button type="submit" name="signup-submit">Signup</button>
+            <script type="text/javascript">
+    $(function() {
+        $("#password").passwordStrength();
+    });
+</script>
           </form>
           <!--
           NOTES FOR ME BEFORE DOING PHP!

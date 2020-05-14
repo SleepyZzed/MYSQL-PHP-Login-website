@@ -192,5 +192,59 @@ h1 {
   color: green;
   text-align: center;
 }
+.password-strength-indicator.very-weak
+            {
+                background: #cf0000;
+                min-width: 80%;
+                color: rgb(236, 236, 236);
+                text-align: center;
+                max-width: 100%;
+                font-size: small;
+                padding-left: 10px;
+               
+            }
+
+            .password-strength-indicator.weak
+            {
+                background: #f6891f;
+                min-width: 80%;
+                color: rgb(255, 255, 255);
+                text-align: left;
+                max-width: 100%;
+                font-size: small;
+                padding-left: 5px;
+            }
+
+            .password-strength-indicator.mediocre
+            {
+                background: #eeee00;
+                border-color: #d6d600;
+                min-width: 80%;
+                color: rgb(0, 0, 0);
+                text-align: left;
+                max-width: 100%;
+                font-size: small;
+                
+            }
+
+            .password-strength-indicator.strong
+            {
+                background: #99ff33;
+                border-color: #7acc29;
+                min-width: 80%;
+                color: rgb(0, 0, 0);
+                text-align: center;
+                max-width: 100%;
+                padding-left: 10px;
+            }
+
+            .password-strength-indicator.very-strong
+            {
+                background: #22cf00;
+                border-color: #1B9900;
+                min-width: 160%;
+                color: rgb(255, 255, 255);
+                text-align: left;
+            }
 
 
