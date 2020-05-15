@@ -6,8 +6,15 @@ if(isset($_GET['vkey']))
     
     if($resultSet->num_rows == 1){
         $update = $mysqli->query("UPDATE users SET verified = 1 WHERE vkey = '$vkey' LIMIT 1");
+        
         if($update)
         {
+        
+        
+        session_start();
+        session_unset();
+        session_destroy();
+    
         header("Location: ../index.php?success=verifycomplete");
         exit();
         }
@@ -22,6 +29,8 @@ if(isset($_GET['vkey']))
 
 }
 else{
+   
+
     header("Location: ../index.php");
     exit();
 }

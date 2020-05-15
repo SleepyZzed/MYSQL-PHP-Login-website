@@ -11,14 +11,41 @@
         if ($_GET["error"] == "alreadyverified") {
           echo '<p class="signuperror">This email address is already verified</p>';
         }
+        if ($_GET["error"] == "emptyfields") {
+          echo '<p class="signuperror">Login fields are empty please input username and password</p>';
+        }
+        if ($_GET["error"] == "wrongpwd") {
+          echo '<p class="signuperror">Password and is incorrect please try again</p>';
+        }
       }
       if (isset($_GET["success"])) {
         if ($_GET["success"] == "verifycomplete") {
-          echo '<p class="signupsuccess">Your email address has been verified!</p>';
+          echo '<p class="signupsuccess">Your email address has been verified please login to access your account!</p>';
         }
+        
+      }
+      if (isset($_GET["login"])) {
+        if ($_GET["login"] == "wronguidpwd") {
+          echo '<p class="signuperror">Incorrect username and password</p>';
+        }
+        
       }
       if(isset($_SESSION['id'])){
-        echo '<p class="login-status">You are logged in as:', $_SESSION['uid'], '<br>email address: ', $_SESSION['email'], '</p>';
+        if($_SESSION['verified'] == "0")
+        {
+          $vrfyMsg = "Your account is not verified please check your emails";
+          $classmsg = '<p class="signuperror">';
+          echo $classmsg, $vrfyMsg,'<br><br></p>';
+          echo '<p class="login-status">You are logged in as:', $_SESSION['uid'], '<br>email address: ', $_SESSION['email'], '</p>';
+        }
+        else if($_SESSION['verified'] == "1")
+        { 
+          $vrfyMsg = "Your account is verified thank you for using this service";
+          $classmsg = '<p class="signupsuccess">';
+          echo $classmsg, $vrfyMsg,'<br><br></p>';
+          echo '<p class="login-status">You are logged in as:', $_SESSION['uid'], '<br>email address: ', $_SESSION['email'], '</p>';
+        }
+       
         
       }
       else{

@@ -28,7 +28,7 @@ if (isset($_POST['login-submit'])) {
     // Next we need to get the password from the user in the database that has the same username as what the user typed in, and then we need to de-hash it and check if it matches the password the user typed into the login form.
 
     // We will connect to the database using prepared statements which work by us sending SQL to the database first, and then later we fill in the placeholders by sending the users data.
-    $sql = "SELECT * FROM users WHERE uidUsers=?;";
+    $sql = "SELECT * FROM users WHERE emailUsers=?;";
     // Here we initialize a new statement using the connection from the dbh.inc.php file.
     $stmt = mysqli_stmt_init($conn);
     // Then we prepare our SQL statement AND check if there are any errors with it.
@@ -69,6 +69,7 @@ if (isset($_POST['login-submit'])) {
           $_SESSION['id'] = $row['idUsers'];
           $_SESSION['uid'] = $row['uidUsers'];
           $_SESSION['email'] = $row['emailUsers'];
+          $_SESSION['verified'] = $row['verified'];
           // Now the user is registered as logged in and we can now take them back to the front page! :)
           header("Location: ../index.php?login=success");
           exit();

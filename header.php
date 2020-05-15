@@ -21,12 +21,12 @@ session_start();
     <header>
       <nav class="nav-header-main">
         <a class="header-logo" href="index.php">
-          <img src="img/logo.png" alt="mmtuts logo">
+          <img src="img/log1o.png" alt="logo">
         </a>
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">About me</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">About us</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
       </nav>
@@ -40,7 +40,7 @@ session_start();
     }
     else{
       echo '<form action="includes/login.inc.php" method="post">
-      <input type="text" name="mailuid" autocomplete="off" placeholder="Username..">
+      <input type="text" name="mailuid" autocomplete="off" placeholder="E-Mail..">
       <input type="password" name="pwd" autocomplete="off" placeholder="Password..">
       <button type="submit" name="login-submit">Login</button>
     </form>
