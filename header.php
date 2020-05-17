@@ -17,7 +17,7 @@ session_start();
   </head>
   <body>
 
-    <!-- Here is the header where I decided to include the login form for this tutorial. -->
+    <!-- Here is the header where I decided to include the login form -->
     <header>
       <nav class="nav-header-main">
         <a class="header-logo" href="index.php">
